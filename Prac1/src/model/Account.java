@@ -3,10 +3,10 @@ package model;
 import java.util.Date;
 
 public class Account {
-	String account_number;
-	String username_of_account_holder;
-	String account_type;
-	Date account_opening_date;
+	private String account_number;
+	private String username_of_account_holder;
+	private String account_type;
+	private Date account_opening_date;
 	
 	public Account(String account_number, String username_of_account_holder, String account_type,
 			Date account_opening_date) {
@@ -42,5 +42,7 @@ public class Account {
 		this.account_opening_date = account_opening_date;
 	}
 	
-	
+	public String toString() {
+		return account_number + ", " + username_of_account_holder + ", " + account_type + ", " + account_opening_date;
+	}
 }

@@ -2,6 +2,8 @@ package app;
 
 
 import java.text.ParseException;
+
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Vector;
@@ -92,9 +94,15 @@ public class SimpleBankingApp {
 	 * @return A double value, being the balance of the account
 	 */
 	public static double getBalance(String account_number) {
-		return 0;
-		// TODO
+		double balance = 0.0;
 		
+		for (Transaction transaction : transactions) {
+			if(transaction.getAccount_number() == account_number){
+				balance += transaction.getTransaction_amount();
+			}
+		}
+		
+		return balance;
 	}
 	
 	

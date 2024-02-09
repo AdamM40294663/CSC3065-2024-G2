@@ -10,7 +10,7 @@ public class User {
 	public User(String username, String password, String first_name, String last_name, String mobile_number) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.password = password; //injected intentional defect: line commented out
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.mobile_number = mobile_number;
@@ -45,5 +45,9 @@ public class User {
 	}
 	public void setMobile_number(String mobile_number) {
 		this.mobile_number = mobile_number;
+	}
+	
+	public String toString() {
+		return username + ", " + password + ", " + first_name + ", " + last_name + ", " + mobile_number;
 	}
 }
