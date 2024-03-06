@@ -15,10 +15,6 @@ public class AccountTest {
 
 	}
 	
-	//public Account(String account_number, String username_of_account_holder, String account_type,Date account_opening_date)
-	//anAccount = new Account("5495-1234", "mike", "Standard", new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2019"));#
-	
-	
 	public static void testConstructor() throws ParseException{
 		
 		String testAccount_number = "5495-1234";

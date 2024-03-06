@@ -101,7 +101,6 @@ public class SimpleBankingApp {
 				balance += transaction.getTransaction_amount();
 			}
 		}
-		
 		return balance;
 	}
 	
