@@ -211,6 +211,43 @@ public class RangeTest {
 				0.000000001d);
 	}
 	
+	//Testing Constrain with values inside rangeObjectBothNegative1
+	@Test
+	public void testInsideNegativeRangeConstrain() {
+		assertEquals("Constrain Method Failed: Should return -4.0", -4.0, rangeObjectBothNegative1.constrain(-4.0),
+				0.000000001d);
+	}
+	
+	//Testing Constrain with values below rangeObjectBothNegative1
+	public void testBelowNegativeRangeConstrain() {
+		assertEquals("Constrain Method Failed: Should return -1.0", -1.0, rangeObjectBothNegative1.constrain(0.0),
+				0.000000001d);
+	}
+	
+	//Testing Constrain with values above rangeObjectBothNegative1
+	public void testAboveNegativeRangeConstrain() {
+		assertEquals("Constrain Method Failed: Should return -5.0", -5.0, rangeObjectBothNegative1.constrain(-6.0),
+				0.000000001d);
+	}
+	
+	//Testing Constrain with values inside Equal range
+	public void testInsideEqualRangeConstrain() {
+		assertEquals("Constrain Method Failed: Should return 4.0", 4.0, rangeObjectBothEqual.constrain(4.0),
+				0.000000001d);
+	}
+	
+	//Testing Constrain with values above equal range
+	public void testAboveEqualRangeConstrain() {
+		assertEquals("Constrain Method Failed: Should return 4.0", 4.0, rangeObjectBothEqual.constrain(6.0),
+				0.000000001d);
+	}
+	
+	//Testing Constrain with values below equal range
+	public void testBelowEqualRangeConstrain() {
+		assertEquals("Constrain Method Failed: Should return 4.0", 4.0, rangeObjectBothEqual.constrain(3.0),
+				0.000000001d);
+	}
+	
 
 	
 	// ----------Testing Expand To Include Method----------
@@ -248,6 +285,7 @@ public class RangeTest {
 		assertEquals("ExpandToInclude Method Failed: Should return rangeObjectUnderTest1 range (1.0 - 5.0)",
 				expectedRange, Range.expandToInclude(null, 5.0));
 	}
+	
 	
 	
 	//----------Testing Contains Method----------
