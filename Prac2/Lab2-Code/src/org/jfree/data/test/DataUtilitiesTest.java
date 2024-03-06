@@ -39,26 +39,25 @@ public class DataUtilitiesTest {
 		values = null;
 
 	}
-
+ 
 	//----------calculateColumnTotal Tests----------
 	@Test
-	public void testValidDataCalculateColumnTotal() {
+	public void testCalculateColumnTotalValidData() {
 		assertEquals("CalculateColumnTotal Failed: It should be 5.0", 5.0, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d);
 	}
 
 	@Test
-	public void testNullCalculateColumnTotal() {
+	public void testCalculateColumnTotalNull() {
 		try {
 			DataUtilities.calculateColumnTotal(null, 0);
 			fail("No exception thrown");
 		} catch (Exception e) {
 			assertTrue("Incorrect exception type thrown", e.getClass().equals(IllegalArgumentException.class));
 		}
-
 	}
 	
 	@Test
-	public void testInvalidColumnCalculateColumnTotal() {
+	public void testCalculateColumnTotalInvalidColumn() {
 		try {
 			//Checks assert output if it receives one for a failure 
 			assertEquals("CalculateColumnTotal Failed: It should return 0.0 for invalid column", 0.0, DataUtilities.calculateColumnTotal(values2D, 3), 0.0000001d);
@@ -67,18 +66,17 @@ public class DataUtilitiesTest {
 			//if exception is triggered this is also a fail
 			fail("Exception should not be thrown and 0.0 returned");
 		}
-		
 	}
 	
 	//----------calulateRowTotal Tests----------
 	
 	@Test
-	public void testValidDataCalculateRowTotal() {
+	public void testCalculateRowTotalValidData() {
 		assertEquals("calculateRowTotal Failed it should be 3.0", 3.0, DataUtilities.calculateRowTotal(values2D, 0),  0.0000001d);
 	}
 	
 	@Test
-	public void testNullCalculateRowTotal() {
+	public void testCalculateRowTotalNull() {
 		try {
 			DataUtilities.calculateRowTotal(null, 0);
 			fail("No exception thrown");
@@ -90,7 +88,7 @@ public class DataUtilitiesTest {
 	}
 	
 	@Test
-	public void testInvalidRowCalculateRowTotal() {
+	public void testCalculateRowTotalInvalidRow() {
 		try {
 			//Checks assert output if it receives one for a failure 
 			assertEquals("CalculateRowTotal Failed: It should return 0.0 for invalid row", 0.0, DataUtilities.calculateRowTotal(values2D, 3), 0.0000001d);
@@ -106,7 +104,7 @@ public class DataUtilitiesTest {
 	//----------createNumberArray Tests----------
 	
 	@Test
-	public void testValidDataCreateNumberArray() {
+	public void testCreateNumberArrayValidData() {
 		double[] validData = {1.0, 2.0, 3.0};
 		Number[] expected = new Number[] {1.0, 2.0, 3.0};
 		
@@ -114,7 +112,7 @@ public class DataUtilitiesTest {
 	}
 	
 	@Test
-	public void testNullCreateNumberArray() {
+	public void testCreateNumberArrayNull() {
 		try {
 			DataUtilities.createNumberArray(null);
 			fail("No exception thrown");
@@ -129,7 +127,7 @@ public class DataUtilitiesTest {
 	//----------createNumberArray2D Tests----------
 	
 	@Test
-	public void testValidDataCreateNumberArray2D() {
+	public void testCreateNumberArray2DValidData() {
 		double[][] validData = {{1.0, 2.0}, {3.0, 4.0}};
 		Number[][] expected = new Number[2][2];
 		expected[0][0] = 1.0;
@@ -141,7 +139,7 @@ public class DataUtilitiesTest {
 	}
 	
 	@Test
-	public void testNullDataCreateNumberArray2D() {
+	public void testCreateNumberArray2DNullData() {
 		try {
 			DataUtilities.createNumberArray2D(null);
 			fail("No exception thrown");
@@ -155,7 +153,7 @@ public class DataUtilitiesTest {
 	//----------getCummulativePercentages Tests----------
 	
 	@Test
-	public void testValidDataGetCummulativePercentage() {
+	public void testGetCummulativePercentageValidData() {
 		KeyedValues valid = DataUtilities.getCumulativePercentages(values);
 		
 		//checks all 3 parts of the arithmetic for full coverage
@@ -165,7 +163,7 @@ public class DataUtilitiesTest {
 	}
 	
 	@Test
-	public void testNullDataGetCummulativePercentage() {
+	public void testGetCummulativePercentageNullData() {
 		try {
 			DataUtilities.getCumulativePercentages(null);
 			fail("No exception thrown");
