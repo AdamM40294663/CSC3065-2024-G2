@@ -2,6 +2,7 @@ package org.jfree.data;
 
 import static org.junit.Assert.*;
 
+
 import org.jfree.data.DataUtilities;
 import org.jfree.data.DefaultKeyedValues;
 import org.jfree.data.DefaultKeyedValues2D;
@@ -11,10 +12,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DataUtilitiesTest {
-
+public class DataUtilitiesTest extends DataUtilities {
+	
 	private Values2D values2D;
 	private KeyedValues values;
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -24,12 +26,16 @@ public class DataUtilitiesTest {
 	    testValues.addValue(4, 1, 0);
 	    testValues.addValue(2, 0, 1);
 	    testValues.addValue(3, 1, 1);
+	    testValues.addValue(null, 0, 2);
+	    testValues.addValue(null, 2, 0);
+	    
 	    
 	    DefaultKeyedValues keyedTestValues = new DefaultKeyedValues();
 	    values = keyedTestValues;
 	    keyedTestValues.addValue("key1", 5);
 	    keyedTestValues.addValue("key2", 9);
 	    keyedTestValues.addValue("key3", 2);
+	    
 
 	}
 
@@ -39,6 +45,9 @@ public class DataUtilitiesTest {
 		values = null;
 
 	}
+	
+	
+	
  
 	//----------calculateColumnTotal Tests----------
 	@Test
@@ -47,7 +56,7 @@ public class DataUtilitiesTest {
 	}
 
 	@Test
-	public void testCalculateColumnTotalNull() {
+	public void testCalculateColumnTotalNullColumn() {
 		try {
 			DataUtilities.calculateColumnTotal(null, 0);
 			fail("No exception thrown");
@@ -67,6 +76,8 @@ public class DataUtilitiesTest {
 			fail("Exception should not be thrown and 0.0 returned");
 		}
 	}
+	
+	
 	
 	//----------calulateRowTotal Tests----------
 	
@@ -171,6 +182,20 @@ public class DataUtilitiesTest {
 		catch (Exception e){
 			assertTrue("Incorrect exception type thrown", e.getClass().equals(IllegalArgumentException.class));
 		}
+	}
+	
+	@Test
+	public void testGetCummulativePercentagesNullKeyed() {
+		DefaultKeyedValues keyedTestValues = new DefaultKeyedValues();
+	    values = keyedTestValues;
+	    keyedTestValues.addValue("key1", null);
+	    keyedTestValues.addValue("key2", 9);
+	    keyedTestValues.addValue("key3", 2);
+	    
+	    assertThrows(IllegalArgumentException.class, () -> {
+	        DataUtilities.getCumulativePercentages(values);
+	    });
+	    
 	}
 	
 	
